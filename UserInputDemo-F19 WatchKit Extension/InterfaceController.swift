@@ -40,6 +40,23 @@ class InterfaceController: WKInterfaceController {
     // -------------------------------
     @IBAction func replyButtonPressed() {
         print("Reply button pressed")
+        
+        //show the built in UI for accepting user input
+        let cannedResponse = ["8:00am","9:40am", "2:00pm",]
+                
+        presentTextInputController(withSuggestions: cannedResponse, allowedInputMode: .plain) {
+                
+                 (results) in
+            
+            
+            if (results != nil && results!.count > 0) {
+                // 2. write your code to process the person's response
+                let userResponse = results?.first as? String
+                self.responseLabel.setText(userResponse)
+            }
+
+                // Put your code here
+        }
     }
     
     
